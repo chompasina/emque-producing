@@ -39,6 +39,9 @@ Or install it yourself as:
       }
     end
 
+    # initialize the publisher (not required, but recommended)
+    Emque::Producing.initialize_publisher!
+
     # create a message class
     class MyMessage
       include Emque::Producing::Message

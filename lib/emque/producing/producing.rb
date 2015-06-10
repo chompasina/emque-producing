@@ -30,15 +30,18 @@ module Emque
         Socket.gethostbyname(Socket.gethostname).first
       end
 
-      def publisher
-        return @publisher unless @publisher.nil?
-
+      def initialize_publisher!
         if (configuration.publishing_adapter == :rabbitmq)
           require "emque/producing/publisher/rabbitmq"
           @publisher = Emque::Producing::Publisher::RabbitMq.new
         else
           raise "No publisher configured"
         end
+      end
+
+      def publisher
+        return @publisher unless @publisher.nil?
+        initialize_publisher!
         @publisher
       end
 
