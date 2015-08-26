@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Emque::Producing::Configuration do
   subject { Emque::Producing::Configuration.new }

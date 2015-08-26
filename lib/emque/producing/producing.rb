@@ -33,12 +33,8 @@ module Emque
       def publisher
         return @publisher unless @publisher.nil?
 
-        if (configuration.publishing_adapter == :rabbitmq)
-          require "emque/producing/publisher/rabbitmq"
-          @publisher = Emque::Producing::Publisher::RabbitMq.new
-        else
-          raise "No publisher configured"
-        end
+        require "emque/producing/publisher/rabbitmq"
+        @publisher = Emque::Producing::Publisher.new
         @publisher
       end
 
